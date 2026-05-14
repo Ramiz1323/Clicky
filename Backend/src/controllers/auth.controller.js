@@ -1,26 +1,17 @@
-const authModel = require("../models/auth.model.js");
+const userModel = require("../models/user.model.js");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
-async function register(req, res) {
-  const { username, email, password } = req.body;
+async function registerController(req, res) {
+  const { username, email, password, bio, profileImage } = req.body;
 
-  if (!username || !email || !password) {
-    return res.status(400).json({
-      message: "Fill all details",
-    });
-  }
+  const isUserExist = await userModel.findOne({
+    $or: [{ username }, { email }],
+  });
 
-  if (password.length < 6) {
+  if (isUserExist) {
     return res.status(400).json({
-      message: "Password must be at least 6 characters",
-    });
-  }
-
-  const isExistingUser = await authModel.findOne({ email });
-  if (isExistingUser) {
-    return res.status(400).json({
-      message: "User already exists",
+      message: "Username or email already exists",
     });
   }
 
@@ -29,90 +20,86 @@ async function register(req, res) {
     .update(password)
     .digest("hex");
 
-  const user = await authModel.create({
+  const user = await userModel.create({
     username,
     email,
     password: hashedPassword,
+    bio,
+    profileImage,
   });
 
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  });
+
+  res.cookie("token", token);
+
   res.status(201).json({
-    message: "User registered successfully",
-    user,
+    message: "User created successfully",
+    user: {
+      email: user.email,
+      username: user.username,
+      bio: user.bio,
+      profileImage: user.profileImage,
+    },
   });
 }
 
-async function login(req, res) {
-  const { email, password } = req.body;
+async function loginController(req, res) {
+  /**
+   * username
+   * password
+   *
+   * { username:test, email:undefined, password:Test12 } = req.body
+   *
+   * email
+   * password
+   *
+   * { username:undefined, email:test@test.com, password:Test12 } = req.body
+   *
+   */
 
-  if (!email || !password) {
-    return res.status(400).json({
-      message: "Fill all details",
+  const { username, email, password } = req.body;
+
+  const user = await userModel.findOne({
+    $or: [{ username: username }, { email: email }],
+  });
+
+  if (!user) {
+    return res.status(404).json({
+      message: "User not found",
     });
   }
 
-  const isExistingUser = await authModel.findOne({ email });
-  if (!isExistingUser) {
-    return res.status(400).json({
-      message: "Invalid credentials",
+  const hashedPassword = crypto
+    .createHash("md5")
+    .update(password)
+    .digest("hex");
+
+  const isPasswordCorrect = hashedPassword == user.password;
+
+  if (!isPasswordCorrect) {
+    return res.status(401).json({
+      message: "Password is incorrect",
     });
   }
 
-  const isMatch =
-    crypto.createHash("md5").update(password).digest("hex") === isExistingUser.password;
-  if (!isMatch) {
-    return res.status(400).json({
-      message: "Invalid credentials",
-    });
-  }
-
-  const token = jwt.sign(
-    { id: isExistingUser._id, username: isExistingUser.username },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: "1d",
-    },
-  );
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {expiresIn: "1d"});
 
   res.cookie("token", token);
 
   res.status(200).json({
     message: "Login successful",
-    data:{
-        username: isExistingUser.username,
-        email: isExistingUser.email
-    },
-  });
-}
-
-async function profile(req, res) {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.status(401).json({
-      message: "Unauthorized access",
-    });
-  }
-
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-  res.status(200).json({
-    message: "User fetched successfully",
-    data: {
-      username: decoded.username,
-      email: decoded.email
+    user: {
+      username: user.username,
+      email: user.email,
+      bio: user.bio,
+      profileImage: user.profileImage,
     }
-  });
-}
-
-function logout(req, res) {
-  res.clearCookie("token");
-  res.status(200).json({
-    message: "Logout successful",
-  });
+  })
 }
 
 module.exports = {
-    register,
-    login,
-    logout,
-    profile,
+  registerController,
+  loginController,
 };
