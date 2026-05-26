@@ -1,6 +1,6 @@
 const express = require('express');
 const postRouter = express.Router();
-const { createPost, getPosts, getPostDetails } = require('../controllers/post.controller.js');
+const { createPost, getPosts, getPostDetails, likePost } = require('../controllers/post.controller.js');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 const { identifyUser } = require('../middlewares/auth.middleware.js');
@@ -22,5 +22,12 @@ postRouter.get('/', identifyUser, getPosts);
  * - return a detail about a post with id & also check if the post belongs to the user or not
  */
 postRouter.get('/details/:id', identifyUser, getPostDetails);
+
+/**
+ * POST /api/posts/like/:postId [protected]
+ * - req.params = { postId }
+ * - req.user = { username }
+ */
+postRouter.post('/like/:postId', identifyUser, likePost);
 
 module.exports = postRouter;
