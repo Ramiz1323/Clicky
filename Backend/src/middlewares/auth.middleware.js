@@ -22,6 +22,10 @@ async function identifyUser (req, res, next) {
     next();
 }
 
+// req.user = {
+//     id: "1234567890"
+// }
+
 module.exports = {
     identifyUser,
 };
