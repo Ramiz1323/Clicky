@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../style/Register.scss";
+import axios from "axios";
 
 const Register = () => {
   const [fullName, setFullName] = useState("");
@@ -11,8 +12,16 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // axios register implementation later
-    console.log("Register credentials:", { fullName, username, email, password });
+    axios.post("http://localhost:3000/api/auth/register", {
+      fullName: fullName,
+      username: username,
+      email: email,
+      password: password
+    }, { withCredentials: true }).then((res) => {
+      console.log(res.data);
+    }).catch((err) => {
+      console.log(err);
+    })
   };
 
   return (
@@ -90,7 +99,7 @@ const Register = () => {
         <div className="register-right">
           <div className="glow-shape shape-1"></div>
           <div className="glow-shape shape-2"></div>
-          
+
           <div className="glass-container">
             <div className="floating-cards">
               {/* Glass Card 1 */}

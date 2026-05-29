@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../style/Login.scss";
+import axios from "axios";
 
 const Login = () => {
   const [identifier, setIdentifier] = useState("");
@@ -9,8 +10,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // axios login implementation later
-    console.log("Login credentials:", { identifier, password });
+    axios.post("http://localhost:3000/api/auth/login", {
+      username: identifier,
+      password: password
+    }, { withCredentials: true }).then((res) => { console.log(res.data) }).catch((err) => { console.log(err) })
   };
 
   return (
@@ -69,7 +72,7 @@ const Login = () => {
         <div className="login-right">
           <div className="glow-shape shape-1"></div>
           <div className="glow-shape shape-2"></div>
-          
+
           <div className="glass-container">
             <div className="floating-cards">
               {/* Mockup Base */}
@@ -80,7 +83,7 @@ const Login = () => {
                   <div className="dot"></div>
                 </div>
                 <div style={{ width: '100%', height: 'calc(100% - 60px)', overflow: 'hidden' }}>
-                  <img src="/messi.jpg" alt="Featured Post" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition:"top" }} />
+                  <img src="/messi.jpg" alt="Featured Post" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: "top" }} />
                 </div>
               </div>
 
@@ -105,7 +108,7 @@ const Login = () => {
                 <div className="card-content">
                   <h4>Activity</h4>
                   <p style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: 0 }}>
-                    <span style={{color: '#9ca3af'}}>🤍</span> New reaction on Post<br/>
+                    <span style={{ color: '#9ca3af' }}>🤍</span> New reaction on Post<br />
                     2 mins ago
                   </p>
                 </div>
