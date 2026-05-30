@@ -1,6 +1,15 @@
 const followModel = require("../models/follow.model.js");
 const userModel = require("../models/user.model.js");
 
+async function getUserProfile(req, res){
+  try {
+    const user = await userModel.findOne({ username: req.user.username });
+    return res.status(200).json({ user });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 async function followUser(req, res) {
   const followerUsername = req.user.username;
   const followeeUsername = req.params.username;
@@ -121,6 +130,7 @@ async function rejectUser(req, res) {
 }
 
 module.exports = {
+  getUserProfile,
   followUser,
   unfollowUser,
   followStatus,
