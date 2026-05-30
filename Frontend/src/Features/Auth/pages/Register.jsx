@@ -13,7 +13,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:3000/api/auth/register", {
-      fullName: fullName,
+      fullname: fullName,
       username: username,
       email: email,
       password: password
