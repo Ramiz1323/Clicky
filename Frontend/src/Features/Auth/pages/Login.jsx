@@ -5,7 +5,6 @@ import "../style/Login.scss";
 import { useAuth } from "../hooks/useAuth.js";
 
 const Login = () => {
-
   const { user, loading, handleLogin } = useAuth()
   const navigate = useNavigate()
 
@@ -18,11 +17,6 @@ const Login = () => {
     navigate("/");
   };
 
-  if(loading){
-    return (<main>
-      <h1>Loading...</h1>
-    </main>)
-  }
 
   return (
     <>
@@ -67,7 +61,7 @@ const Login = () => {
               </div>
 
               <button type="submit" className="submit-btn">
-                Login
+                {loading ? "Logging in..." : "Login"}
               </button>
             </form>
 

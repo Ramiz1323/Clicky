@@ -1,27 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../style/Register.scss";
-import axios from "axios";
+import { useAuth } from "../hooks/useAuth.js";
 
 const Register = () => {
+  const { user, loading, handleRegister } = useAuth();
+  const navigate = useNavigate();
+
   const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3000/api/auth/register", {
-      fullname: fullName,
-      username: username,
-      email: email,
-      password: password
-    }, { withCredentials: true }).then((res) => {
-      console.log(res.data);
-    }).catch((err) => {
-      console.log(err);
-    })
+    await handleRegister(fullName, username, email, password);
+    navigate("/");
   };
 
   return (
@@ -85,8 +80,12 @@ const Register = () => {
                 />
               </div>
 
-              <button type="submit" className="submit-btn" style={{ marginTop: '12px' }}>
-                Create Account
+              <button
+                type="submit"
+                className="submit-btn"
+                style={{ marginTop: "12px" }}
+              >
+                {loading ? "Creating Account..." : "Create Account"}
               </button>
 
               <div className="register-footer">
@@ -104,39 +103,76 @@ const Register = () => {
             <div className="floating-cards">
               {/* Glass Card 1 */}
               <div className="glass-card card-1">
-                <div className="icon-wrapper blue">
-                  🧠
-                </div>
+                <div className="icon-wrapper blue">🧠</div>
                 <div className="card-content">
                   <h4>AI-Driven Insights</h4>
-                  <p>Advanced algorithms that predict workflow bottlenecks before they happen.</p>
+                  <p>
+                    Advanced algorithms that predict workflow bottlenecks before
+                    they happen.
+                  </p>
                 </div>
               </div>
 
               {/* Glass Card 2 */}
               <div className="glass-card card-2">
-                <div className="icon-wrapper green">
-                  🔄
-                </div>
+                <div className="icon-wrapper green">🔄</div>
                 <div className="card-content">
                   <h4>Seamless Collaboration</h4>
-                  <p>Real-time multiplayer editing for teams that demand maximum velocity.</p>
+                  <p>
+                    Real-time multiplayer editing for teams that demand maximum
+                    velocity.
+                  </p>
                 </div>
               </div>
 
               {/* Glass Card 3 */}
               <div className="glass-card card-3">
-                <div className="icon-wrapper purple">
-                  👥
-                </div>
-                <div className="card-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                <div className="icon-wrapper purple">👥</div>
+                <div
+                  className="card-content"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
                   <div>
                     <h4>Active Community</h4>
                   </div>
-                  <div style={{ display: 'flex' }}>
-                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#4b5563', border: '2px solid #1e2025', zIndex: 3 }}></div>
-                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#6b7280', border: '2px solid #1e2025', marginLeft: '-8px', zIndex: 2 }}></div>
-                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#9ca3af', border: '2px solid #1e2025', marginLeft: '-8px', zIndex: 1 }}></div>
+                  <div style={{ display: "flex" }}>
+                    <div
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        borderRadius: "50%",
+                        background: "#4b5563",
+                        border: "2px solid #1e2025",
+                        zIndex: 3,
+                      }}
+                    ></div>
+                    <div
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        borderRadius: "50%",
+                        background: "#6b7280",
+                        border: "2px solid #1e2025",
+                        marginLeft: "-8px",
+                        zIndex: 2,
+                      }}
+                    ></div>
+                    <div
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        borderRadius: "50%",
+                        background: "#9ca3af",
+                        border: "2px solid #1e2025",
+                        marginLeft: "-8px",
+                        zIndex: 1,
+                      }}
+                    ></div>
                   </div>
                 </div>
               </div>
