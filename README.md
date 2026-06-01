@@ -24,7 +24,7 @@ A modern social media platform focused on sharing moments, connecting with peopl
 ### Frontend
 - React.js
 - Vite
-- Tailwind CSS
+- SASS / SCSS
 - Axios
 - React Router
 
@@ -35,6 +35,8 @@ A modern social media platform focused on sharing moments, connecting with peopl
 - Mongoose
 - JWT Authentication
 - Cookie Parser
+- ImageKit
+- Multer
 
 ---
 
@@ -65,6 +67,7 @@ PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_secret_key
 FRONTEND_URL=http://localhost:5173
+IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
 ```
 
 ---
