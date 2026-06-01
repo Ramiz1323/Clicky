@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../auth.context.jsx";
-import { login } from "../services/auth.api.js";
+import { login, register } from "../services/auth.api.js";
 
-export const useAuth = () =>{
+export const useAuth = () => {
     const context = useContext(AuthContext);
     const { user, setUser, loading, setLoading } = context;
 
@@ -13,7 +13,15 @@ export const useAuth = () =>{
         setLoading(false);
     }
 
-    return{
-        user, loading, handleLogin
+    const handleRegister = async (fullname, username, email, password) => {
+        setLoading(true);
+        const response = await register(fullname, username, email, password);
+        setUser(response);
+        console.log(response);
+        setLoading(false);
+    }
+
+    return {
+        user, loading, handleLogin, handleRegister
     }
 }
