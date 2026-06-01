@@ -12,9 +12,9 @@ const { identifyUser } = require('../middlewares/auth.middleware.js');
 postRouter.post('/', identifyUser, upload.single('image'), createPost);
 
 /**
- * GET /api/posts/ [protected]
+ * GET /api/posts/feed [protected]
  */
-postRouter.get('/', identifyUser, getPosts);
+postRouter.get('/feed', identifyUser, getPosts);
 
 /**
  * GET /api/posts/details/:id [protected]
