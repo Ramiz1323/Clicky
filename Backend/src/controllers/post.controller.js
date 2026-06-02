@@ -28,7 +28,7 @@ async function createPost(req, res) {
 
 async function getPosts(req, res){
     const userId = req.user.id;
-    const posts = await postModel.find({user: userId})
+    const posts = await postModel.find({user: userId}).populate("user", "-password")
 
     res.status(200).json({
         message: "Posts fetched successfully",
@@ -63,6 +63,15 @@ async function getPostDetails(req, res){
     })
 }
 
+async function getAllPosts(req, res) {
+    const posts = await postModel.find().populate("user")
+
+    return res.status(200).json({
+        message: "Posts fetched successfully",
+        posts: posts,
+    });
+}
+
 async function likePost(req, res){
   const username = req.user.username;
   const postId = req.params.postId;
@@ -91,5 +100,6 @@ module.exports = {
   createPost,
   getPosts,
   getPostDetails,
+  getAllPosts,
   likePost,
 };
