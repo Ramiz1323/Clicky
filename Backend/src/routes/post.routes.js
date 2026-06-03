@@ -1,6 +1,12 @@
 const express = require('express');
 const postRouter = express.Router();
-const { createPost, getPosts, getPostDetails, getAllPosts, likePost } = require('../controllers/post.controller.js');
+const {
+    createPost,
+    getUserPosts,
+    getPostDetails,
+    getAllPosts,
+    likePost
+} = require('../controllers/post.controller.js');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 const { identifyUser } = require('../middlewares/auth.middleware.js');
@@ -12,9 +18,9 @@ const { identifyUser } = require('../middlewares/auth.middleware.js');
 postRouter.post('/', identifyUser, upload.single('image'), createPost);
 
 /**
- * GET /api/posts/feed [protected]
+ * GET /api/posts/ [protected]
  */
-postRouter.get('/feed', identifyUser, getPosts);
+postRouter.get('/', identifyUser, getUserPosts);
 
 /**
  * GET /api/posts/details/:id [protected]
@@ -24,9 +30,9 @@ postRouter.get('/feed', identifyUser, getPosts);
 postRouter.get('/details/:id', identifyUser, getPostDetails);
 
 /**
- * GET /api/posts/all [protected]
+ * GET /api/posts/feed [protected]
  */
-postRouter.get("/all", identifyUser, getAllPosts);
+postRouter.get("/feed", identifyUser, getAllPosts);
 
 /**
  * POST /api/posts/like/:postId [protected]

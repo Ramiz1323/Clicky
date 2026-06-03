@@ -26,7 +26,7 @@ async function createPost(req, res) {
   });
 }
 
-async function getPosts(req, res){
+async function getUserPosts(req, res){
     const userId = req.user.id;
     const posts = await postModel.find({user: userId}).populate("user", "-password")
 
@@ -98,7 +98,7 @@ async function likePost(req, res){
 
 module.exports = {
   createPost,
-  getPosts,
+  getUserPosts,
   getPostDetails,
   getAllPosts,
   likePost,
