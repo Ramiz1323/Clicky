@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./Features/LandingPage";
 import Login from "./Features/Auth/pages/Login";
 import Register from "./Features/Auth/pages/Register";
+import Feed from "./Features/Post/pages/Feed";
 
 const AppRouter = () => {
   return (
@@ -11,9 +12,12 @@ const AppRouter = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        
+        <Route path="/feed" element={<Feed />} />
       </Routes>
     </BrowserRouter>
   );
 };
 
 export default AppRouter;
+
