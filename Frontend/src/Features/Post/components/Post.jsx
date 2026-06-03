@@ -89,8 +89,6 @@ const Post = () => {
             <PostCard
               key={post._id}
               post={post}
-              isLiked={false}
-              likesCount={0}
             />
           ))
         ) : (

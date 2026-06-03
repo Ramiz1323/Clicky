@@ -14,12 +14,11 @@ export const usePost = () => {
         } finally {
             setLoading(false);
         }
-        // console.log("Feed data:", feed);
     }
 
     useEffect(()=>{
         handleGetFeed();
     }, []);
 
-    return {loading, handleGetFeed, feed}
+    return { loading, feed }
 }
