@@ -31,10 +31,13 @@ const Feed = () => {
       )
     },
     {
-      name: "Explore", icon: (
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10" />
-          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+      name: "Reels", icon: (
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2.5" />
+          <path d="M2 9h20" />
+          <path d="M6 4 9 9" />
+          <path d="M11 4 14 9" />
+          <path d="M16 4 19 9" />
         </svg>
       )
     },
