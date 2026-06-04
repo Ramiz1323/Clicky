@@ -8,9 +8,13 @@ export const usePost = () => {
 
     const handleGetFeed = async() => {
         setLoading(true);
-        const data = await getFeed();
-        setFeed(data.posts.reverse());
-        setLoading(false);
+        try{
+            const data = await getFeed();
+            setFeed(data.posts.reverse());
+        } finally {
+            setLoading(false);
+        }
+        // console.log("Feed data:", feed);
     }
 
     useEffect(()=>{
