@@ -71,6 +71,7 @@ async function getAllPosts(req, res) {
         post: post._id
       })
       post.isLiked = Boolean(isLiked);
+      // post.likeCount = await likeModel.countDocuments({post: post._id});
       return post;
     }))
 
@@ -103,6 +104,28 @@ async function likePost(req, res){
   })
 };
 
+async function unlikePost(req, res){
+  const username = req.user.username;
+  const postId = req.params.postId;
+
+  const post = await postModel.findById(postId);
+
+  if(!post){
+    return res.status(404).json({
+      message: "Post not found",
+    })
+  }
+
+  const like = await likeModel.deleteOne({
+    user: username,
+    post: postId
+  })
+
+  res.status(200).json({
+    message: "Post unliked successfully",
+    like,
+  })
+};
 
 module.exports = {
   createPost,
@@ -110,4 +133,5 @@ module.exports = {
   getPostDetails,
   getAllPosts,
   likePost,
+  unlikePost,
 };
