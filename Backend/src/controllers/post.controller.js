@@ -64,7 +64,7 @@ async function getPostDetails(req, res){
 }
 
 async function getAllPosts(req, res) {
-    const posts = await postModel.find().populate("user")
+    const posts = await postModel.find().populate("user").sort({ _id: -1 })
 
     return res.status(200).json({
         message: "Posts fetched successfully",
