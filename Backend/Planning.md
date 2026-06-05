@@ -63,3 +63,12 @@ Only the features listed below are included in this phase.
 15. Repeat steps 7-14 until the project is complete and stable
 16. Release the project to the public
 17. Maintain the project and fix any bugs that arise
+
+### Tasks: 
+
+1. unlike
+2. Follower
+3. Followee
+4. Profile Details(Owner & Other User)
+5. Navigation of Frontend Routes
+6. Deployment 

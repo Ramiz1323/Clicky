@@ -4,8 +4,10 @@ import "../style/PostCard.scss";
 const PostCard = ({ 
   post, isLiked, handleLike
 }) => {
-  const { caption, imgUrl, user } = post;
-  const { fullname, username, profileImage } = user ;
+  const { caption, imgUrl, user, createdAt } = post;
+  const { fullname, username, profileImage } = user 
+
+  const formattedDate = new Date(createdAt).toLocaleString();
 
   return (
     <article className="post-card">
@@ -20,7 +22,7 @@ const PostCard = ({
           <div className="author-details">
             <h3 className="author-name">{fullname}</h3>
             <p className="post-meta">
-              @{username} • time pore lagabo
+              @{username} • {formattedDate}
             </p>
           </div>
         </div>
