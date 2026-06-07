@@ -129,6 +129,25 @@ async function rejectUser(req, res) {
     });
 }
 
+async function getNotFollowing(req, res){
+  try{
+    const user = req.user.username;
+
+    const followingRecords = await followModel.find({ follower: user });
+    const followingUsername = followingRecords.map(record => record.followee);
+
+    followingUsername.push(user);
+
+    const notFollowingUsers = await userModel.find({
+      username: { $nin: followingUsername }
+    })
+
+    return res.status(200).json({ users: notFollowingUsers });
+  }catch{
+    return res.status(500).json({ message: "Internal Server error" });
+  }
+}
+
 module.exports = {
   getUserProfile,
   followUser,
@@ -136,4 +155,5 @@ module.exports = {
   followStatus,
   acceptUser,
   rejectUser,
+  getNotFollowing
 };
