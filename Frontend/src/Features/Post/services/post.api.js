@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+
 const api = axios.create({
-    baseURL: "http://localhost:3000/api/posts",
+    baseURL: `${API_URL}/posts`,
     withCredentials: true
 })
 
@@ -10,7 +12,7 @@ export async function getFeed() {
     return response.data;
 }
 
-export async function createPost(caption, image){
+export async function createPost(caption, image) {
     const formData = new FormData();
     formData.append("caption", caption);
     formData.append("image", image);
