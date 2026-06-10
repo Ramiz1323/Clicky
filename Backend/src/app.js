@@ -20,4 +20,11 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/posts', postRouter);
 
+app.get("/", (req, res) => {
+    res.status(200).json({ 
+        success: true, 
+        message: "Clicky Backend is running..."
+     });
+});
+
 module.exports = app;
