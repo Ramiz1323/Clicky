@@ -6,7 +6,7 @@ const LandingPage = () => {
   return (
     <div className="landing-page-container">
       <main className="hero-section">
-        <h1 className="hero-title">Welcome to Clickly</h1>
+        <h1 className="hero-title">Welcome to Clicky</h1>
         <p className="hero-subtitle">
           Connect, share, and engage with your community in real-time. 
           Experience a beautiful and fast social platform tailored for you.
@@ -43,4 +43,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default LandingPage;

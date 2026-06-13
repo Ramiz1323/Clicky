@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import { getProfile } from "./services/auth.api";
 
 export const AuthContext = createContext();
 
@@ -10,11 +10,9 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkSession = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/users/profile", {
-          withCredentials: true,
-        });
-        if (response.data && response.data.user) {
-          setUser(response.data.user);
+        const data = await getProfile();
+        if (data && data.user) {
+          setUser(data.user);
         }
       } catch (err) {
         console.log("No active session:", err.message);

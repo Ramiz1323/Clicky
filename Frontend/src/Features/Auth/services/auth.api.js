@@ -18,3 +18,10 @@ export async function register(fullname, username, email, password) {
     const response = await api.post("/register", { fullname, username, email, password });
     return response.data;
 };
+
+export async function getProfile() {
+    const response = await axios.get(`${API_URL}/users/profile`, {
+        withCredentials: true,
+    });
+    return response.data;
+}
