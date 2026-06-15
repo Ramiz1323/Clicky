@@ -60,6 +60,8 @@ Backend/
 
 ## ⚙️ Environment Variables
 
+Configure the following environment variables in your server root directory.
+
 Create a `.env` file inside the server folder.
 
 ```env
