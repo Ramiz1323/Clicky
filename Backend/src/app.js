@@ -7,7 +7,7 @@ const authRouter = require('./routes/auth.routes.js');
 const postRouter = require('./routes/post.routes.js');
 const userRouter = require('./routes/user.routes.js');
 
-// middlewares
+// Application Middlewares Setup
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
