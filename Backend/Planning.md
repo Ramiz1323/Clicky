@@ -7,7 +7,7 @@ Only the features listed below are included in this phase.
 ## Authentication
 - Register
   - Save user data
-  - Return authentication token
+  - Return authentication token (24h expiry)
 - Login
   - Validate user credentials
   - Return authentication token
