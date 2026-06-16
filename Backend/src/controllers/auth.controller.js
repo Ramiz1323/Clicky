@@ -79,7 +79,7 @@ async function loginController(req, res) {
     .update(password)
     .digest("hex");
 
-  const isPasswordCorrect = hashedPassword == user.password;
+  const isPasswordCorrect = (hashedPassword === user.password); // Verify hashed password
 
   if (!isPasswordCorrect) {
     return res.status(401).json({
