@@ -8,6 +8,9 @@ const imagekit = new ImageKit({
 });
 
 async function createPost(req, res) {
+  if (!req.file) {
+    return res.status(400).json({ message: "Image payload is required for creating a post" });
+  }
   const file = await imagekit.files.upload({
     file: await toFile(Buffer.from(req.file.buffer), "file"),
     fileName: "Test",
