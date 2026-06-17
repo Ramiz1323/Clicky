@@ -14,7 +14,7 @@ async function identifyUser (req, res, next) {
         decoded = jwt.verify(token, process.env.JWT_SECRET);
     }catch(err){
         return res.status(401).json({
-            message: "Invalid token, unauthorized access...",
+            message: "Invalid or expired authentication token, unauthorized access...",
         });
     }
 
