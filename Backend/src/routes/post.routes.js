@@ -41,4 +41,9 @@ postRouter.get("/feed", identifyUser, getAllPosts);
  */
 postRouter.post('/like/:postId', identifyUser, likePost);
 
+/**
+ * POST /api/posts/unlike/:postId [protected]
+ */
+postRouter.post('/unlike/:postId', identifyUser, unlikePost);
+
 module.exports = postRouter;
