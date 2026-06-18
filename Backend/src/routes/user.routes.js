@@ -29,7 +29,7 @@ userRouter.post('/unfollow/:username', identifyUser, unfollowUser);
 
 /**
  * POST /api/user/status
- * Description: Check follow status
+ * Description: Check user follow request status
  * Protected: Yes
  * 
  */
