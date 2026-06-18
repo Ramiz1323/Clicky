@@ -14,6 +14,7 @@ async function followUser(req, res) {
   const followerUsername = req.user.username;
   const followeeUsername = req.params.username;
 
+  // Prevent self-following actions
   if (followeeUsername === followerUsername) {
     return res.status(400).json({
       message: "You cannot follow yourself",
