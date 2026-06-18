@@ -52,7 +52,7 @@ async function getPostDetails(req, res){
         })
     }
 
-    const isValidUser = post.user.toString() === userId;
+    const isValidUser = post.user.toString() === userId; // Verify ownership for detailed view
 
     if(!isValidUser){
         return res.status(401).json({
