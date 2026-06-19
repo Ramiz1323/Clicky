@@ -20,6 +20,7 @@ postRouter.post('/', identifyUser, upload.single('image'), createPost);
 /**
  * GET /api/posts/ [protected]
  */
+// Fetch all posts created by authenticated user
 postRouter.get('/', identifyUser, getUserPosts);
 
 /**
