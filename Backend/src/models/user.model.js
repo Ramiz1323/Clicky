@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     },
     profileImage:{
         type: String,
-        default: "https://ik.imagekit.io/ufnhisesq/instagram-posts/istockphoto-2177842022-1024x1024.jpg"
+        default: "https://ik.imagekit.io/ufnhisesq/instagram-posts/istockphoto-2177842022-1024x1024.jpg" // CDN fallback avatar
     }
 })
 
