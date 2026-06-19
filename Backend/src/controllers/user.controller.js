@@ -83,7 +83,7 @@ async function unfollowUser(req, res) {
   await followModel.findByIdAndDelete(isUserFollowing._id);
 
   res.status(200).json({
-    message: `You have unfollowed ${followeeUsername} successfully`,
+    message: `Successfully unfollowed ${followeeUsername}`,
   });
 }
 
