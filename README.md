@@ -52,7 +52,7 @@ Backend/
 ├── controllers/
 ├── routes/
 ├── models/
-├── middleware/
+├── middlewares/
 ├── config/
 ```
 
