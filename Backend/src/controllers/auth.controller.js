@@ -66,7 +66,7 @@ async function loginController(req, res) {
 
   const user = await userModel.findOne({
     $or: [{ username: username }, { email: email }],
-  }).select("+password");
+  }).select("+password"); // Retrieve password for verification
 
   if (!user) {
     return res.status(404).json({
