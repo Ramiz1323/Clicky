@@ -7,6 +7,7 @@ import Feed from "./Features/Post/pages/Feed";
 import ProtectedRoute from "./Features/Auth/components/ProtectedRoute";
 import PublicRoute from "./Features/Auth/components/PublicRoute";
 
+// Main Application Router
 const AppRouter = () => {
   return (
     <BrowserRouter>
