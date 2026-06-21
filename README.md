@@ -24,7 +24,7 @@ A modern social media platform focused on sharing moments, connecting with peopl
 ### Frontend
 - React.js
 - Vite
-- SASS / SCSS
+- SASS / SCSS styling engine
 - Axios
 - React Router
 
