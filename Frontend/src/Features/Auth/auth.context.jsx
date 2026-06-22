@@ -3,6 +3,7 @@ import { getProfile } from "./services/auth.api";
 
 export const AuthContext = createContext();
 
+// Authentication State Provider
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
