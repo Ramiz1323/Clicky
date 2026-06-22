@@ -1,3 +1,4 @@
+// Auth State Management Hook
 import { useContext } from "react";
 import { AuthContext } from "../auth.context.jsx";
 import { login, register } from "../services/auth.api.js";
