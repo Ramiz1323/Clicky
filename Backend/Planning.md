@@ -66,7 +66,7 @@ Only the features listed below are included in this phase.
 
 ### Tasks: 
 
-1. unlike
+1. [x] unlike (implemented)
 2. Follower
 3. Followee
 4. Profile Details(Owner & Other User)
