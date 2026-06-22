@@ -20,6 +20,7 @@ export async function register(fullname, username, email, password) {
 };
 
 export async function getProfile() {
+    // Fetch authenticated user profile details
     const response = await axios.get(`${API_URL}/users/profile`, {
         withCredentials: true,
     });
