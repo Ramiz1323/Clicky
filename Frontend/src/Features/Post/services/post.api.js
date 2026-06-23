@@ -8,6 +8,7 @@ const api = axios.create({
 })
 
 export async function getFeed() {
+    // Retrieve global feed posts
     const response = await api.get("/feed");
     return response.data;
 }
