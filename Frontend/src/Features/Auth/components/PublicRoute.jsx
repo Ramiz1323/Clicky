@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../auth.context';
 
+// Public route wrapper to redirect active sessions
 const PublicRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
 
