@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 
 export const PostContext = createContext();
 
+// Post State Management Context
 export const PostContextProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(false);
