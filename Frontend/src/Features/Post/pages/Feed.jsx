@@ -75,7 +75,7 @@ const Feed = () => {
   }
 
   return (
-    <div className="feed-container">
+    <div className="feed-container" role="main">
       <MobileHeader setActiveTab={setActiveTab} />
 
       <div className="feed-layout">
