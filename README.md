@@ -96,7 +96,7 @@ npm install
 
 ---
 
-## ▶️ Run Locally
+## ▶️ Local Development Setup
 
 ### Start Backend
 
