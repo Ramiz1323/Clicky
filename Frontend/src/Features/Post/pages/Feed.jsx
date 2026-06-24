@@ -7,6 +7,7 @@ import Sidebar from "../components/Sidebar.jsx";
 import "../style/Feed.scss";
 import { useAuth } from "../../Auth/hooks/useAuth.js";
 
+// Main Feed Display Page
 const Feed = () => {
   const { user, loading: authLoading } = useAuth();
 
