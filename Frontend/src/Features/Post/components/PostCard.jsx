@@ -7,7 +7,7 @@ const PostCard = ({
   const { caption, imgUrl, user, createdAt } = post;
   const { fullname = "User", username = "member", profileImage = "https://ik.imagekit.io/ufnhisesq/instagram-posts/istockphoto-2177842022-1024x1024.jpg" } = user || {} 
 
-  const formattedDate = new Date(createdAt).toLocaleString();
+  const formattedDate = createdAt ? new Date(createdAt).toLocaleDateString() : 'Just now';
 
   return (
     <article className="post-card">
