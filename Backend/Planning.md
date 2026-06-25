@@ -64,7 +64,7 @@ Only the features listed below are included in this phase.
 16. Release the project to the public
 17. Maintain the project and fix any bugs that arise
 
-### Tasks: 
+### Project Milestones & Tasks: 
 
 1. [x] unlike (implemented)
 2. Follower
