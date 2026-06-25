@@ -5,7 +5,7 @@ const PostCard = ({
   post, isLiked, handleLike
 }) => {
   const { caption, imgUrl, user, createdAt } = post;
-  const { fullname, username, profileImage } = user 
+  const { fullname = "User", username = "member", profileImage = "https://ik.imagekit.io/ufnhisesq/instagram-posts/istockphoto-2177842022-1024x1024.jpg" } = user || {} 
 
   const formattedDate = new Date(createdAt).toLocaleString();
 
