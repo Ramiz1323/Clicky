@@ -45,6 +45,7 @@
   100% { transform: translate(0, 0); }
 }
 
+/* Hero Banner Styles */
 .hero-section {
   text-align: center;
   z-index: 1;
