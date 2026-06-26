@@ -5,7 +5,7 @@ import './LandingPage.css';
 const LandingPage = () => {
   return (
     <div className="landing-page-container">
-      <main className="hero-section">
+      <main className="hero-section" aria-label="Welcome section">
         <h1 className="hero-title">Welcome to Clicky</h1>
         <p className="hero-subtitle">
           Connect, share, and engage with your community in real-time. 
