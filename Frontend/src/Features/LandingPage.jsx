@@ -22,7 +22,7 @@ const LandingPage = () => {
         </div>
       </main>
 
-      <section className="features-grid">
+      <section className="features-grid" aria-label="Platform features">
         <div className="feature-card">
           <div className="feature-icon">✨</div>
           <h3 className="feature-title">Share Moments</h3>
