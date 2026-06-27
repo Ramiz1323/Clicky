@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import "../style/Login.scss";
 import { useAuth } from "../hooks/useAuth.js";
 
+// User Login Page View
 const Login = () => {
   const { user, loading, handleLogin } = useAuth()
   const navigate = useNavigate()
