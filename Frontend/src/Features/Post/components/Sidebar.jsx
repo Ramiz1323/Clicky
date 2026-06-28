@@ -121,4 +121,5 @@ const Sidebar = ({ activeTab, setActiveTab, navigationItems, user }) => {
   );
 };
 
+// Export Sidebar Component
 export default Sidebar;
