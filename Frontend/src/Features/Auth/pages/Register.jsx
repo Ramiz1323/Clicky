@@ -185,4 +185,5 @@ const Register = () => {
   );
 };
 
+// Export Register View Component
 export default Register;
