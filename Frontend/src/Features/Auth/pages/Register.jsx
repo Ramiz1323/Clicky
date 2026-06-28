@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import "../style/Register.scss";
 import { useAuth } from "../hooks/useAuth.js";
 
+// User Registration Page View
 const Register = () => {
   const { user, loading, handleRegister } = useAuth();
   const navigate = useNavigate();
