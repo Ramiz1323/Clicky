@@ -197,4 +197,5 @@ const CreatePostModal = ({
   );
 };
 
+// Export CreatePostModal Component
 export default CreatePostModal;
