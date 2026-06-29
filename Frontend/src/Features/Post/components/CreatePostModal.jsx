@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import "../style/CreatePostModal.scss";
 
+// Modal Dialog for New Post Creation
 const CreatePostModal = ({ 
   isOpen, 
   onClose, 
