@@ -1,3 +1,4 @@
+// Mobile Responsive Header View
 import React from "react";
 
 const MobileHeader = ({ setActiveTab }) => {
