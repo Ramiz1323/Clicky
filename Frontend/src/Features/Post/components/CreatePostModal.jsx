@@ -1,3 +1,4 @@
+// Create Post Modal Dialog
 import React, { useState, useRef } from "react";
 import "../style/CreatePostModal.scss";
 
