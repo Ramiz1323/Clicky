@@ -3,6 +3,7 @@ import { usePost } from "../hook/usePost.js";
 import { useAuth } from "../../Auth/hooks/useAuth.js";
 import PostCard from "./PostCard.jsx";
 
+// Post Container Component
 const Post = () => {
   const { feed, loading, handleLike } = usePost();
   
