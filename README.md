@@ -132,6 +132,7 @@ npm run dev
 - Stories Feature
 - Video Upload Support
 - Dark Mode
+- Direct Messaging Support
 ---
 
 ## 🤝 Contributing
