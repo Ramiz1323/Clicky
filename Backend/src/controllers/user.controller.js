@@ -4,7 +4,7 @@ const userModel = require("../models/user.model.js");
 async function getUserProfile(req, res){
   try {
     const user = await userModel.findOne({ username: req.user.username });
-    return res.status(200).json({ user });
+    return res.status(200).json({ success: true, user });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
   }
