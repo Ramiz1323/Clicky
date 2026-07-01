@@ -6,5 +6,5 @@ const connectDB = require('./src/config/database.js');
 connectDB();
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`[Clickly Backend] Active on port ${PORT}`);
 });
