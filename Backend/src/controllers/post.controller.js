@@ -34,6 +34,7 @@ async function getUserPosts(req, res){
     const posts = await postModel.find({user: userId}).populate("user", "-password")
 
     res.status(200).json({
+        success: true,
         message: "Posts fetched successfully",
         posts,
     })
