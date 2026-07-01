@@ -45,7 +45,7 @@ Only the features listed below are included in this phase.
 - Save
 
 
-## Full Stack Development Process
+## Standard Full Stack Workflow Process
 1. New feature planning and design
 2. Backend API
 3. Backend Logic
