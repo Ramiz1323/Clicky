@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+// Mount React Application Root
 createRoot(document.getElementById('root')).render(
     <App />
 )
