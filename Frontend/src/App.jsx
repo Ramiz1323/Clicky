@@ -14,4 +14,5 @@ const App = () => {
   )
 }
 
+// Export Root App Component
 export default App
