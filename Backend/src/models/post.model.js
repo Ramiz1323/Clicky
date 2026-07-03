@@ -5,6 +5,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // Media storage URL generated via ImageKit CDN
     imgUrl: {
         type: String,
         required: [true, "imgUrl is required for creating a post"]
