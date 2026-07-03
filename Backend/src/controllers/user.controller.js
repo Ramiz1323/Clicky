@@ -87,6 +87,7 @@ async function unfollowUser(req, res) {
   });
 }
 
+// Check if pending follow request exists
 async function followStatus(req, res) {
     const user = req.user.username;
 
