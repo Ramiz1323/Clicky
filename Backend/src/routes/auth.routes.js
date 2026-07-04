@@ -1,3 +1,4 @@
+// Authentication API Router Setup
 const authRouter = require('express').Router();
 const { registerController, loginController } = require('../controllers/auth.controller.js');
 
