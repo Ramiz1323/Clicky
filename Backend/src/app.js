@@ -11,7 +11,12 @@ const userRouter = require('./routes/user.routes.js');
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173", // Allowed frontend origin
+    origin: [
+        "http://localhost:5173",
+        "https://clicky.skramizraza.tech",
+        "http://clicky.skramizraza.tech",
+        process.env.FRONTEND_URL
+    ].filter(Boolean), // Allowed frontend origins
     credentials: true
 }));
 
