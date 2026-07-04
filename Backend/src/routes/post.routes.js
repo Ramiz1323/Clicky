@@ -5,7 +5,8 @@ const {
     getUserPosts,
     getPostDetails,
     getAllPosts,
-    likePost
+    likePost,
+    unlikePost
 } = require('../controllers/post.controller.js');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
