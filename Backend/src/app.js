@@ -15,6 +15,8 @@ app.use(cors({
         "http://localhost:5173",
         "https://clicky.skramizraza.tech",
         "http://clicky.skramizraza.tech",
+        "https://clicksy.dibyo.tech",
+        "http://clicksy.dibyo.tech",
         process.env.FRONTEND_URL
     ].filter(Boolean), // Allowed frontend origins
     credentials: true
